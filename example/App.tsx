@@ -10,7 +10,7 @@
 
 import React from 'react'
 import { View, Image, StatusBar} from 'react-native'
-import { RNCarousel } from './react-native-carousel'
+import { RNCarousel } from '@twotalltotems/react-native-carousel'
 
 declare const global: {HermesInternal: null | {}}
 
