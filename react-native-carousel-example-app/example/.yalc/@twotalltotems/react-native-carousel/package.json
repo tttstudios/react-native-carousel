@@ -1,0 +1,31 @@
+{
+  "name": "@twotalltotems/react-native-carousel",
+  "version": "1.0.0+ae1fd304",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "src/index.d.ts",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "src/index.d.ts"
+  ],
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://odin-mebesius@bitbucket.org/two_tall_totems/react-native-carousel.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/two_tall_totems/react-native-carousel#readme"
+}

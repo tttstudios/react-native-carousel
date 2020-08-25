@@ -1134,10 +1134,7 @@
   dependencies:
     type-detect "4.0.8"
 
-"@twotalltotems/react-native-carousel@file:..":
-  version "1.0.0"
-
-"@twotalltotems/react-native-carousel@file:../":
+"@twotalltotems/react-native-carousel@file:.yalc/@twotalltotems/react-native-carousel":
   version "1.0.0"
 
 "@types/babel__core@^7.1.7":
