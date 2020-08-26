@@ -8,8 +8,8 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
     items,
     onItemIn,
     onItemOut,
-    duration,
-    transitionLength,
+    inFocusDuration,
+    animationDuration,
     containerStyle: overrideContainerStyle,
     contentStyle: overrideContentStyle
   } = props
@@ -17,11 +17,11 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   /* 
    * In an ideal world, we wouldn't need this and it would be just 1
    * However, we receive a bug of the first transition not animating
-   * when we do this. It likely has to do with this bug:
+   * on Android when we do this. It likely has to do with this bug:
    * https://github.com/facebook/react-native/issues/25318
    *
    * We got inspiration for a solution from the poster of this issue
-   * in their explanaation of the issue here:
+   * in their explanation of the issue here:
    * https://github.com/facebook/react-native/issues/25318#issue-458167509
    * */
   const maxOpacity = Platform.OS === 'ios' ? 1 : 1.1
@@ -29,8 +29,8 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   // Prop handling
   const containerStyle = { ...styles.CONTAINER_STYLE, ...overrideContainerStyle }
   const contentStyle = { ...styles.CONTENT_STYLE, ...overrideContentStyle }
-  const inFocusDuration = duration ? duration : 1000
-  const transitionDuration = transitionLength ? transitionLength : 700
+  const onScreenDuration = inFocusDuration ? inFocusDuration : 1000
+  const transitionDuration = animationDuration ? animationDuration : 700
 
   // indices for iterating over the items array
   const [indexA, setIndexA] = React.useState(0)
@@ -95,7 +95,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   React.useEffect(() => {
     Animated.loop(
       Animated.sequence([
-        Animated.delay(inFocusDuration),
+        Animated.delay(onScreenDuration),
         Animated.stagger(100, [
           Animated.timing(opacityA, {
             toValue: 0,
@@ -110,7 +110,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
             easing: Easing.inOut(Easing.sin)
           })
         ]),
-        Animated.delay(inFocusDuration),
+        Animated.delay(onScreenDuration),
         Animated.stagger(100, [
           Animated.timing(opacityA, {
             toValue: maxOpacity,

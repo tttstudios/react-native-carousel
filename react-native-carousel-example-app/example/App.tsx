@@ -29,28 +29,11 @@ const App = () => {
     <Image source={mew} style={{ height: '75%', width: '75%', resizeMode: 'contain' }}/>
   ]
 
-  const oneItem = [
-    <Image source={bulbasaur}/>
-  ]
-
-  // const itemOut = () => {
-  //   console.log('I\'m outta here')
-  // }
-
-  // const itemIn = () => {
-  //   console.log('Back, back, back again!')
-  // }
-
   return (
     <>
       <StatusBar barStyle='dark-content' />
       <View style={{ flex: 1 }}>
-        {/* <RNCarousel
-          items={ITEMS} 
-          onItemOut={itemOut}
-          onItemIn={itemIn}/> */}
         <RNCarousel items={ITEMS}/>
-        {/* <RNCarousel items={[]}/> */}
       </View>
     </>
   )
