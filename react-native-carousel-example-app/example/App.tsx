@@ -9,7 +9,7 @@
  */
 
 import React from 'react'
-import { View, Image, StatusBar} from 'react-native'
+import { View, StatusBar } from 'react-native'
 import { RNCarousel } from '@twotalltotems/react-native-carousel'
 
 declare const global: {HermesInternal: null | {}}
@@ -21,19 +21,19 @@ const App = () => {
   const mewtwo = require('./assets/mewtwo.png')
   const mew = require('./assets/mew.png')
 
-  const ITEMS = [
-    <Image source={bulbasaur}/>,
-    <Image source={squirtle} style={{ height: '75%', width: '75%', resizeMode: 'contain' }}/>,
-    <Image source={charmander} style={{ height: '75%', width: '75%', resizeMode: 'contain' }}/>,
-    <Image source={mewtwo} style={{ height: '75%', width: '75%', resizeMode: 'contain' }}/>,
-    <Image source={mew} style={{ height: '75%', width: '75%', resizeMode: 'contain' }}/>
+  const SOURCES = [
+    bulbasaur,
+    squirtle,
+    charmander,
+    mewtwo,
+    mew
   ]
 
   return (
     <>
       <StatusBar barStyle='dark-content' />
       <View style={{ flex: 1 }}>
-        <RNCarousel items={ITEMS}/>
+        <RNCarousel sources={SOURCES}/>
       </View>
     </>
   )

@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { View, Animated, Easing, Platform } from 'react-native'
+import { View, Image, Animated, Easing, Platform } from 'react-native'
 import { RNCarouselProps } from '@twotalltotems/react-native-carousel'
 import styles from './styles'
 
 export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCarouselProps) => {
   const {
-    items,
+    sources,
     onItemIn,
     onItemOut,
     inFocusDuration,
@@ -32,7 +32,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   const onScreenDuration = inFocusDuration ? inFocusDuration : 1000
   const transitionDuration = animationDuration ? animationDuration : 700
 
-  // indices for iterating over the items array
+  // indices for iterating over the sources array
   const [indexA, setIndexA] = React.useState(0)
   const [indexB, setIndexB] = React.useState(1)
 
@@ -131,7 +131,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
 
   /*
    * prevStateA hook where we update the value of indexA
-   * to update the item from the items array that ViewA
+   * to update the item from the sources array that ViewA
    * will display. Based on the opacityA listener functionality
    * above, this should only ever update once per opacityA
    * being 0
@@ -139,7 +139,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   React.useEffect(() => {
     // item going out
     if (prevStateA === 0) {
-      setIndexA((indexA + 2) % items.length)
+      setIndexA((indexA + 2) % sources.length)
       if (onItemOut) {
         onItemOut()
       }
@@ -154,7 +154,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
 
   /*
    * prevStateB hook where we update the value of indexB
-   * to update the item from the items array that ViewB
+   * to update the item from the sources array that ViewB
    * will display. Based on the opacityB listener functionality
    * above, this should only ever update once per opacityB
    * being 0
@@ -162,7 +162,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   React.useEffect(() => {
     // item going out
     if (prevStateB === 0) {
-      setIndexB((indexB + 2) % items.length)
+      setIndexB((indexB + 2) % sources.length)
       if (onItemOut) {
         onItemOut()
       }
@@ -176,22 +176,20 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   }, [prevStateB])
 
   const ViewA = React.useMemo(() =>
-    <Animated.View
-      style={{ ...contentStyle, opacity: opacityA }}>
-      { items[indexA] }
+    <Animated.View style={{ ...contentStyle, opacity: opacityA }}>
+      <Image source={sources[indexA]} style={{ resizeMode: 'center' }}/>
     </Animated.View>,
   [indexA])
 
   const ViewB = React.useMemo(() =>
-    <Animated.View
-        style={{ ...contentStyle, opacity: opacityB }}>
-        { items[indexB] }
+    <Animated.View style={{ ...contentStyle, opacity: opacityB }}>
+      <Image source={sources[indexB]} style={{ resizeMode: 'center' }}/>
     </Animated.View>,
   [indexB])
 
   return (
     <View style={containerStyle}>
-      { items.length > 1
+      { sources.length > 1
       ? <>
         { ViewA }
         { ViewB }
