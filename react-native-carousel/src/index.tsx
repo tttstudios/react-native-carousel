@@ -61,12 +61,17 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * useEffect hook for stateA will only be activated once
    * for a 0/1 value
    */
-  const idA = React.useMemo(() => opacityA.addListener(({value}) => {
-    if ((value === 0 || value === maxOpacity) && prevValueA.current !== value) {
-      prevValueA.current = value
-      setStateA(prevValueA.current)
+  React.useEffect(() => {
+    const idA = opacityA.addListener(({value}) => {
+      if ((value === 0 || value === maxOpacity) && prevValueA.current !== value) {
+        prevValueA.current = value
+        setStateA(prevValueA.current)
+      }
+    })
+    return () => {
+      opacityA.removeListener(idA)
     }
-  }), [])
+  }, [])
 
   /*
    * Listener for the opacityB value. We want to update indexB
@@ -75,12 +80,17 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * useEffect hook for stateB will only be activated once
    * for a 0/1 value
    */
-  const idB = React.useMemo(() => opacityB.addListener(({value}) => {
-    if ((value === 0 || value === maxOpacity) && prevValueB.current !== value) {
-      prevValueB.current = value
-      setStateB(prevValueB.current)
+  React.useEffect(() => {
+    const idB = opacityB.addListener(({value}) => {
+      if ((value === 0 || value === maxOpacity) && prevValueB.current !== value) {
+        prevValueB.current = value
+        setStateB(prevValueB.current)
+      }
+    })
+    return () => {
+      opacityB.removeListener(idB)
     }
-  }), [])
+  }, [])
 
   /*
    * Animation effect hook. The animation is essentially
