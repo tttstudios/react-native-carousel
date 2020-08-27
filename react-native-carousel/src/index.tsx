@@ -23,7 +23,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * We got inspiration for a solution from the poster of this issue
    * in their explanation of the issue here:
    * https://github.com/facebook/react-native/issues/25318#issue-458167509
-   * */
+   */
   const maxOpacity = Platform.OS === 'ios' ? 1 : 1.1
 
   // Prop handling
@@ -48,8 +48,8 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   const opacityB = React.useRef(new Animated.Value(0)).current
 
   /*
-   * prev opacity value refs to help reduce calls to setState
-   * since setState is async
+   * prev opacity value refs to access so that we only call
+   * setState when the opacity value is changing
    */
   const prevValueA = React.useRef(maxOpacity)
   const prevValueB = React.useRef(0)
@@ -59,7 +59,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * only once for each time opacityA becomes 0. The strategy is
    * to set the stateA value to only 0/1 so that the
    * useEffect hook for stateA will only be activated once
-   * for a 0/1 value
+   * for each 0/1 value
    */
   React.useEffect(() => {
     const idA = opacityA.addListener(({value}) => {
@@ -68,6 +68,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
         setStateA(prevValueA.current)
       }
     })
+    // Cleanup function, we need to remove our listener
     return () => {
       opacityA.removeListener(idA)
     }
@@ -78,7 +79,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * only once for each time opacityB becomes 0. The strategy is
    * to set the stateB value to only 0/1 so that the
    * useEffect hook for stateB will only be activated once
-   * for a 0/1 value
+   * for each 0/1 value
    */
   React.useEffect(() => {
     const idB = opacityB.addListener(({value}) => {
@@ -87,6 +88,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
         setStateB(prevValueB.current)
       }
     })
+    // Cleanup function, we need to remove our listener
     return () => {
       opacityB.removeListener(idB)
     }
@@ -183,13 +185,13 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
 
   const ViewA = React.useMemo(() =>
     <Animated.View style={{ ...contentStyle, opacity: opacityA }}>
-      <Image source={sources[indexA]} style={{ resizeMode: 'center' }}/>
+      <Image source={sources[indexA]} style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexA])
 
   const ViewB = React.useMemo(() =>
     <Animated.View style={{ ...contentStyle, opacity: opacityB }}>
-      <Image source={sources[indexB]} style={{ resizeMode: 'center' }}/>
+      <Image source={sources[indexB]} style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexB])
 

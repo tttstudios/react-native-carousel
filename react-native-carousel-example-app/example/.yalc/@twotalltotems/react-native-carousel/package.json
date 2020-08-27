@@ -1,6 +1,6 @@
 {
   "name": "@twotalltotems/react-native-carousel",
-  "version": "1.0.0+314f47f4",
+  "version": "1.0.0+6c5e603d",
   "description": "",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
