@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react-native",
+    "allowJs": true,
     "target": "es2019",
     "module": "es6",
     "esModuleInterop": true,

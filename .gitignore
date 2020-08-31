@@ -64,3 +64,6 @@ ReactotronConfig.js
 
 # ts build dir
 dist
+
+# jest cache dir
+.jest/
