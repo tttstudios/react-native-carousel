@@ -1,6 +1,6 @@
 {
   "name": "@twotalltotems/react-native-carousel",
-  "version": "1.0.0+6c5e603d",
+  "version": "1.0.0+d27887af",
   "description": "",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
@@ -27,5 +27,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/two_tall_totems/react-native-carousel#readme"
+  "homepage": "https://bitbucket.org/two_tall_totems/react-native-carousel#readme",
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
 }

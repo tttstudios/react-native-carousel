@@ -184,19 +184,31 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   }, [stateB])
 
   const ViewA = React.useMemo(() =>
-    <Animated.View style={{ ...contentStyle, opacity: opacityA }}>
-      <Image source={sources[indexA]} style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
+    <Animated.View
+      testID="RNCarouselViewA"
+      style={{ ...contentStyle, opacity: opacityA }}>
+      <Image
+        testID="RNCarouselImageA"
+        source={sources[indexA]}
+        style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexA])
 
   const ViewB = React.useMemo(() =>
-    <Animated.View style={{ ...contentStyle, opacity: opacityB }}>
-      <Image source={sources[indexB]} style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
+    <Animated.View
+      testID="RNCarouselViewB"
+      style={{ ...contentStyle, opacity: opacityB }}>
+      <Image
+        testID="RNCarouselImageB"
+        source={sources[indexB]}
+        style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexB])
 
   return (
-    <View style={containerStyle}>
+    <View
+      testID="RNCarousel"
+      style={containerStyle}>
       { sources.length > 1
       ? <>
         { ViewA }
