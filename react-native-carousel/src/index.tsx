@@ -41,7 +41,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * value of the corresponding opacity value was 0 or 1
    */
   const [stateA, setStateA] = React.useState(maxOpacity)
-  const [stateB, setStateB] = React.useState(maxOpacity)
+  const [stateB, setStateB] = React.useState(0.5)
 
   // opacity ref values for cross dissolve effect
   const opacityA = React.useRef(new Animated.Value(maxOpacity)).current
@@ -120,14 +120,14 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
         ]),
         Animated.delay(onScreenDuration),
         Animated.stagger(100, [
-          Animated.timing(opacityA, {
-            toValue: maxOpacity,
+          Animated.timing(opacityB, {
+            toValue: 0,
             duration: transitionDuration,
             useNativeDriver: true,
             easing: Easing.inOut(Easing.sin)
           }),
-          Animated.timing(opacityB, {
-            toValue: 0,
+          Animated.timing(opacityA, {
+            toValue: maxOpacity,
             duration: transitionDuration,
             useNativeDriver: true,
             easing: Easing.inOut(Easing.sin)

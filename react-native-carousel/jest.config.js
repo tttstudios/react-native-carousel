@@ -26,7 +26,8 @@ module.exports = {
     }
   },
   setupFilesAfterEnv: [
-    "./setup-tests.js"
+    "./setup-tests.js",
+    "./mock.js"
   ],
   // This is the only part which you can keep
   // from the above linked tutorial's config:
