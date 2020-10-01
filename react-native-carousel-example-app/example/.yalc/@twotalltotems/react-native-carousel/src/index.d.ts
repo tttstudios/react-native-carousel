@@ -3,13 +3,13 @@
  */
 
 declare module '@twotalltotems/react-native-carousel' { 
-  import { ViewStyle } from 'react-native'
+  import { ViewStyle, ImageSourcePropType } from 'react-native'
 
   export interface RNCarouselProps {
     /*
-     * React components to display in the carousel
+     * Array of image sources corresponding to images to be displayed
      */
-    items: React.ReactNode[],
+    sources: ImageSourcePropType[],
 
     /*
      * Function to be called when an item goes out of view
@@ -26,13 +26,13 @@ declare module '@twotalltotems/react-native-carousel' {
      * it first becomes fully opaque to when it should start
      * to transition to transparency
      */
-    duration?: number,
+    inFocusDuration?: number,
 
     /*
      * The time in ms that an item takes to go from fully
      * transparent to fully opaque, and vice versa
      */
-    transitionLength?: number,
+    animationDuration?: number,
 
     /*
      * Styling to apply to the container. Useful for

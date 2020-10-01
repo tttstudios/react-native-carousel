@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { View, Animated, Easing, Platform } from 'react-native'
+import { View, Image, Animated, Easing, Platform } from 'react-native'
 import { RNCarouselProps } from '@twotalltotems/react-native-carousel'
 import styles from './styles'
 
 export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCarouselProps) => {
   const {
-    items,
+    sources,
     onItemIn,
     onItemOut,
     inFocusDuration,
@@ -23,7 +23,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
    * We got inspiration for a solution from the poster of this issue
    * in their explanation of the issue here:
    * https://github.com/facebook/react-native/issues/25318#issue-458167509
-   * */
+   */
   const maxOpacity = Platform.OS === 'ios' ? 1 : 1.1
 
   // Prop handling
@@ -32,59 +32,67 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   const onScreenDuration = inFocusDuration ? inFocusDuration : 1000
   const transitionDuration = animationDuration ? animationDuration : 700
 
-  // indices for iterating over the items array
+  // indices for iterating over the sources array
   const [indexA, setIndexA] = React.useState(0)
   const [indexB, setIndexB] = React.useState(1)
 
   /* 
-   * prevState values to keep track of if the last integer
+   * state values to keep track of if the last integer
    * value of the corresponding opacity value was 0 or 1
    */
-  const [prevStateA, setprevStateA] = React.useState(maxOpacity)
-  const [prevStateB, setprevStateB] = React.useState(maxOpacity)
+  const [stateA, setStateA] = React.useState(maxOpacity)
+  const [stateB, setStateB] = React.useState(0.5)
 
   // opacity ref values for cross dissolve effect
   const opacityA = React.useRef(new Animated.Value(maxOpacity)).current
   const opacityB = React.useRef(new Animated.Value(0)).current
 
   /*
-   * prev opacity value refs to help reduce calls to setState
-   * since setState is async
+   * prev opacity value refs to access so that we only call
+   * setState when the opacity value is changing
    */
-  let prevValueA = React.useRef(maxOpacity).current
-  let prevValueB = React.useRef(0).current
+  const prevValueA = React.useRef(maxOpacity)
+  const prevValueB = React.useRef(0)
 
   /*
    * Listener for the opacityA value. We want to update indexA
    * only once for each time opacityA becomes 0. The strategy is
-   * to set the prevStateA value to only 0/1 so that the
-   * useEffect hook for prevStateA will only be activated once
-   * for a 0/1 value
+   * to set the stateA value to only 0/1 so that the
+   * useEffect hook for stateA will only be activated once
+   * for each 0/1 value
    */
-  const idA = opacityA.addListener(({value}) => {
-    if ((value === 0 || value === maxOpacity) && prevValueA !== value) {
-      prevValueA = value
-      if (prevStateA !== value) {
-        setprevStateA(prevValueA)
+  React.useEffect(() => {
+    const idA = opacityA.addListener(({value}) => {
+      if ((value === 0 || value === maxOpacity) && prevValueA.current !== value) {
+        prevValueA.current = value
+        setStateA(prevValueA.current)
       }
+    })
+    // Cleanup function, we need to remove our listener
+    return () => {
+      opacityA.removeListener(idA)
     }
-  })
+  }, [])
 
   /*
    * Listener for the opacityB value. We want to update indexB
    * only once for each time opacityB becomes 0. The strategy is
-   * to set the prevStateB value to only 0/1 so that the
-   * useEffect hook for prevStateB will only be activated once
-   * for a 0/1 value
+   * to set the stateB value to only 0/1 so that the
+   * useEffect hook for stateB will only be activated once
+   * for each 0/1 value
    */
-  const idB = opacityB.addListener(({value}) => {
-    if ((value === 0 || value === maxOpacity) && prevValueB !== value) {
-      prevValueB = value
-      if (prevStateB !== value) {
-        setprevStateB(prevValueB)
+  React.useEffect(() => {
+    const idB = opacityB.addListener(({value}) => {
+      if ((value === 0 || value === maxOpacity) && prevValueB.current !== value) {
+        prevValueB.current = value
+        setStateB(prevValueB.current)
       }
+    })
+    // Cleanup function, we need to remove our listener
+    return () => {
+      opacityB.removeListener(idB)
     }
-  })
+  }, [])
 
   /*
    * Animation effect hook. The animation is essentially
@@ -112,14 +120,14 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
         ]),
         Animated.delay(onScreenDuration),
         Animated.stagger(100, [
-          Animated.timing(opacityA, {
-            toValue: maxOpacity,
+          Animated.timing(opacityB, {
+            toValue: 0,
             duration: transitionDuration,
             useNativeDriver: true,
             easing: Easing.inOut(Easing.sin)
           }),
-          Animated.timing(opacityB, {
-            toValue: 0,
+          Animated.timing(opacityA, {
+            toValue: maxOpacity,
             duration: transitionDuration,
             useNativeDriver: true,
             easing: Easing.inOut(Easing.sin)
@@ -130,68 +138,78 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
   }, [])
 
   /*
-   * prevStateA hook where we update the value of indexA
-   * to update the item from the items array that ViewA
+   * stateA hook where we update the value of indexA
+   * to update the item from the sources array that ViewA
    * will display. Based on the opacityA listener functionality
    * above, this should only ever update once per opacityA
    * being 0
    */
   React.useEffect(() => {
     // item going out
-    if (prevStateA === 0) {
-      setIndexA((indexA + 2) % items.length)
+    if (stateA === 0) {
+      setIndexA((indexA + 2) % sources.length)
       if (onItemOut) {
         onItemOut()
       }
     }
     // item coming in
-    else if (prevStateA === maxOpacity) {
+    else if (stateA === maxOpacity) {
       if (onItemIn) {
         onItemIn()
       }
     }
-  }, [prevStateA])
+  }, [stateA])
 
   /*
-   * prevStateB hook where we update the value of indexB
-   * to update the item from the items array that ViewB
+   * stateB hook where we update the value of indexB
+   * to update the item from the sources array that ViewB
    * will display. Based on the opacityB listener functionality
    * above, this should only ever update once per opacityB
    * being 0
    */
   React.useEffect(() => {
     // item going out
-    if (prevStateB === 0) {
-      setIndexB((indexB + 2) % items.length)
+    if (stateB === 0) {
+      setIndexB((indexB + 2) % sources.length)
       if (onItemOut) {
         onItemOut()
       }
     }
     // item coming in 
-    else if (prevStateB === maxOpacity) {
+    else if (stateB === maxOpacity) {
       if (onItemIn) {
         onItemIn()
       }
     }
-  }, [prevStateB])
+  }, [stateB])
 
   const ViewA = React.useMemo(() =>
     <Animated.View
+      testID="RNCarouselViewA"
       style={{ ...contentStyle, opacity: opacityA }}>
-      { items[indexA] }
+      <Image
+        testID="RNCarouselImageA"
+        source={sources[indexA]}
+        style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexA])
 
   const ViewB = React.useMemo(() =>
     <Animated.View
-        style={{ ...contentStyle, opacity: opacityB }}>
-        { items[indexB] }
+      testID="RNCarouselViewB"
+      style={{ ...contentStyle, opacity: opacityB }}>
+      <Image
+        testID="RNCarouselImageB"
+        source={sources[indexB]}
+        style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexB])
 
   return (
-    <View style={containerStyle}>
-      { items.length > 1
+    <View
+      testID="RNCarousel"
+      style={containerStyle}>
+      { sources.length > 1
       ? <>
         { ViewA }
         { ViewB }

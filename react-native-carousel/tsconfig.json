@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "jsx": "react-native",
+    "allowJs": true,
     "target": "es2019",
     "module": "es6",
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "declaration": true,
     "outDir": "./dist",

@@ -13,7 +13,7 @@
     "example": "example"
   },
   "scripts": {
-    "build" : "tsc",
+    "build": "tsc",
     "test": "jest"
   },
   "repository": {
@@ -29,16 +29,24 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/two_tall_totems/react-native-carousel#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/enzyme": "^3.10.5",
+    "@types/jest": "^26.0.10",
     "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
     "@types/react-native": "^0.62.13",
-    "@types/jest": "^26.0.0",
+    "babel-jest": "^26.3.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "jest": "^26.4.2",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "react": "^16.13",
+    "react-dom": "^16.13.1",
     "react-native": "^0.63",
+    "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
   }
 }
