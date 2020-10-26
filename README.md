@@ -15,6 +15,11 @@ Add images
 or
 `yarn add @twotalltotems/react-native-carousel`
 
+## Dependencies
+
+We make use of React hooks so make sure you have at least React 16.8 and React Native 0.60 installed in your React Native project
+before trying to use this component in your code.
+
 ## Usage
 
 ```js
