@@ -19,7 +19,7 @@ or
 
 ```js
 import { View } from 'react-native'
-import { RNCarousel } from '@tttstudios/react-native-carousel'
+import { RNCarousel } from '@twotalltotems/react-native-carousel'
 
 ...
 
@@ -42,7 +42,7 @@ import { RNCarousel } from '@tttstudios/react-native-carousel'
 ## More Advanced Usage
 
 ```js
-import { RNCarousel } from '@tttstudios/react-native-carousel'
+import { RNCarousel } from '@twotalltotems/react-native-carousel'
 
 ...
 
@@ -72,7 +72,7 @@ import { RNCarousel } from '@tttstudios/react-native-carousel'
 
 | Parameter          | Required | Description                                             |
 | ------------------ | -------- | ------------------------------------------------------- |
-| sources            | Yes      | Images to be displayed                                  |
+| sources            | YES      | Images to be displayed                                  |
 | onItemIn()         | NO       | Function called when an image goes out of view          |
 | onItemOut()        | NO       | Function called when an image comes into view           |
 | inFocusDuration    | NO       | Time in ms that an image is shown                       |
