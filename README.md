@@ -1,13 +1,9 @@
-Add banner
+![Banner](assets/banner.png)
 
 # React Native Carousel
 
-Add tests badge (GitHub workflows?)
-
 `@twotalltotems/react-native-carousel` is a React Native component to make it simple to display a series of images with a crossfade
 animation between them.
-
-Add images
 
 ## Installation
 
