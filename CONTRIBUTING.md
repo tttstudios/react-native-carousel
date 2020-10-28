@@ -1,6 +1,6 @@
 # Introduction
 
-Thank you for considering contributing to `@twotalltotems/react-native-carousel`. It's people like you that make the library better.
+Thank you for considering contributing to `@tttstudios/react-native-carousel`. It's people like you that make the library better.
 
 # Ways to Contribute
 
