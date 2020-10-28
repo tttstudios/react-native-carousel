@@ -11,10 +11,11 @@ animation between them.
 or
 `yarn add @twotalltotems/react-native-carousel`
 
-## Dependencies
+## Installation Requirements
 
-We make use of React hooks so make sure you have at least React 16.8 and React Native 0.60 installed in your React Native project
-before trying to use this component in your code.
+We make use of React hooks so make sure you have at least:
+- React 16.8
+- React Native 0.60
 
 ## Usage
 
@@ -104,7 +105,7 @@ import { RNCarousel } from '@twotalltotems/react-native-carousel'
 
 ## Premium Support By TTT Studios
 
-React native empty-state-view is presented by the mobile team at [TTT Studios](https://ttt.studio). We are a Digital Innovation Studio based out of Vancouver, Canada, delivering custom software and solutions that are designed and developed 100% in-house. The technologies we work with include AR & VR, IoT, AI, security & encryption, and cloud computing.
+`react-native-carousel` is presented by the mobile team at [TTT Studios](https://ttt.studio). We are a Digital Innovation Studio based out of Vancouver, Canada, delivering custom software and solutions that are designed and developed 100% in-house. The technologies we work with include AR & VR, IoT, AI, security & encryption, and cloud computing.
 
 <div align="right">
 	<img src="https://ttt.studio/wp-content/themes/tttwordpresstheme/imgs/ttt-colour.png" width="200px"/>
