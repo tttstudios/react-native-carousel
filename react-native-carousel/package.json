@@ -1,7 +1,7 @@
 {
   "name": "@twotalltotems/react-native-carousel",
   "version": "1.0.0",
-  "description": "",
+  "description": "A React Native component to display images with transitions between them",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
   "module": "dist/index.js",
@@ -9,25 +9,29 @@
     "dist",
     "src/index.d.ts"
   ],
-  "directories": {
-    "example": "example"
-  },
   "scripts": {
     "build": "tsc",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://odin-mebesius@bitbucket.org/two_tall_totems/react-native-carousel.git"
+    "url": "git+https://github.com/tttstudios/react-native-carousel.git"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.60.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/two_tall_totems/react-native-carousel#readme",
+  "keywords": [
+    "react-native",
+    "carousel"
+  ],
+  "author": "TTT Studios (https://ttt.studio)",
+  "contributors": [
+    "Odin Mebesius <odin@ttt.studio> (https://github.com/odin-m)",
+    "Mitchell Ganton <mitchell.ganton@ttt.studio> (https://github.com/MitchellGanton)"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tttstudios/react-native-carousel",
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
