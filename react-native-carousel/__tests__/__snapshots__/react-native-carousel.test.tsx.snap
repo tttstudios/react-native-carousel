@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RNCarousel renders correctly renders correctly given at least two sources 1`] = `"<view testid=\\"RNCarousel\\" style=\\"flex: 1; justify-content: center; align-items: center;\\"><view testid=\\"RNCarouselViewA\\" style=\\"flex: 1; height: 100%; width: 100%; position: absolute; align-items: center; justify-content: center; opacity: 1;\\"><image testid=\\"RNCarouselImageA\\" source=\\"[object Object]\\" style=\\"height: 100%; width: 100%;\\"></image></view><view testid=\\"RNCarouselViewB\\" style=\\"flex: 1; height: 100%; width: 100%; position: absolute; align-items: center; justify-content: center; opacity: 0;\\"><image testid=\\"RNCarouselImageB\\" source=\\"[object Object]\\" style=\\"height: 100%; width: 100%;\\"></image></view></view>"`;
+
+exports[`RNCarousel renders correctly renders correctly given less than two sources 1`] = `"<view testid=\\"RNCarousel\\" style=\\"flex: 1; justify-content: center; align-items: center;\\"></view>"`;
+
+exports[`RNCarousel renders correctly renders the container view correctly 1`] = `"<View testID=\\"RNCarousel\\" style=\\"flex:1;justify-content:center;align-items:center\\"></View>"`;

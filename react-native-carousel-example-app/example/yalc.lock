@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "@twotalltotems/react-native-carousel": {
+      "signature": "dead4c6dfc1fbceec02d4fcdd9b6f305",
+      "file": true
+    }
+  }
+}
