@@ -96,7 +96,7 @@ import { RNCarousel } from '@tttstudios/react-native-carousel'
 <table>
     <tr border="0" style="border: none; ">
         <th border="0" style="border-left: none; border-right: none;">
-        	<img src="https://avatars3.githubusercontent.com/u/67807602?s=400&v=4" width="60px;" style="border-radius: 50%;"/>
+        	<img src="https://avatars2.githubusercontent.com/u/67807602?s=460&v=4" width="60px;" style="border-radius: 50%;"/>
         	<br />
         	<sub><a href="https://github.com/odin-m">Odin Mebesius</a></sub> <br />
         </th>
