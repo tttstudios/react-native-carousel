@@ -2,7 +2,7 @@
  * Typescript declaration file for react-native-carousel 
  */
 
-declare module '@twotalltotems/react-native-carousel' { 
+declare module '@tttstudios/react-native-carousel' { 
   import { ViewStyle, ImageSourcePropType } from 'react-native'
 
   export interface RNCarouselProps {

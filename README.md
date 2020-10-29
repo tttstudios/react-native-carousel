@@ -2,14 +2,14 @@
 
 # React Native Carousel
 
-`@twotalltotems/react-native-carousel` is a React Native component to make it simple to display a series of images with a crossfade
+`@tttstudios/react-native-carousel` is a React Native component to make it simple to display a series of images with a crossfade
 animation between them.
 
 ## Installation
 
-`npm install --save @twotalltotems/react-native-carousel`
+`npm install --save @tttstudios/react-native-carousel`
 or
-`yarn add @twotalltotems/react-native-carousel`
+`yarn add @tttstudios/react-native-carousel`
 
 ## Installation Requirements
 
@@ -21,7 +21,7 @@ We make use of React hooks so make sure you have at least:
 
 ```js
 import { View } from 'react-native'
-import { RNCarousel } from '@twotalltotems/react-native-carousel'
+import { RNCarousel } from '@tttstudios/react-native-carousel'
 
 ...
 
@@ -44,7 +44,7 @@ import { RNCarousel } from '@twotalltotems/react-native-carousel'
 ## More Advanced Usage
 
 ```js
-import { RNCarousel } from '@twotalltotems/react-native-carousel'
+import { RNCarousel } from '@tttstudios/react-native-carousel'
 
 ...
 

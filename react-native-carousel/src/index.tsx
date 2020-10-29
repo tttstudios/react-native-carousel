@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { View, Image, Animated, Easing, Platform } from 'react-native'
-import { RNCarouselProps } from '@twotalltotems/react-native-carousel'
+import { RNCarouselProps } from '@tttstudios/react-native-carousel'
 import styles from './styles'
 
 export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCarouselProps) => {
