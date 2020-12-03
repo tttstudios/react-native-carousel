@@ -190,7 +190,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
       <Image
         testID="RNCarouselImageA"
         source={sources[indexA]}
-        style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
+        style={{ resizeMode: 'cover', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexA])
 
@@ -201,7 +201,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
       <Image
         testID="RNCarouselImageB"
         source={sources[indexB]}
-        style={{ resizeMode: 'contain', height: '100%', width: '100%' }}/>
+        style={{ resizeMode: 'cover', height: '100%', width: '100%' }}/>
     </Animated.View>,
   [indexB])
 
