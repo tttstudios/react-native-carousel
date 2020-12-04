@@ -9,7 +9,7 @@
  */
 
 import React from 'react'
-import { View, StatusBar } from 'react-native'
+import { View, Text, TouchableOpacity, StatusBar } from 'react-native'
 import { RNCarousel } from '@tttstudios/react-native-carousel'
 
 declare const global: {HermesInternal: null | {}}
@@ -48,8 +48,24 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle='dark-content' />
-      <View style={{ flex: 1, paddingHorizontal: 20 }}>
-        <RNCarousel sources={SOURCES}/>
+      <View style={{ flex: 1 }}>
+        <RNCarousel sources={SOURCES}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <TouchableOpacity
+              style={{
+                height: 50,
+                width: 300,
+                backgroundColor: 'black',
+                opacity: 0.75,
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onPress={() => console.log("You pressed me!")}>
+              <Text style={{ fontSize: 16, color: 'white' }}>Gotta Catch 'Em All!</Text>
+            </TouchableOpacity>
+          </View>
+        </RNCarousel>
       </View>
     </>
   )

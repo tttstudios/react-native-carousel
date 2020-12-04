@@ -35,6 +35,11 @@ declare module '@tttstudios/react-native-carousel' {
     animationDuration?: number,
 
     /*
+     * Children to be displayed on top of the carousel
+     */
+    children?: React.ReactNode,
+
+    /*
      * Styling to apply to the container. Useful for
      * padding and margins
      */

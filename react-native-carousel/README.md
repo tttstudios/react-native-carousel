@@ -63,8 +63,21 @@ import { RNCarousel } from '@tttstudios/react-native-carousel'
     inFocusDuration={2000}
     animationDuration={1000}
     containerStyle={{ paddingHorizontal: 20 }}
-    contentStyle={{ height: '50%' }}
-  />
+    contentStyle={{ height: '50%' }}>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <TouchableOpacity
+        style={{
+        height: 50,
+        width: 300,
+        backgroundColor: 'black',
+        opacity: 0.75,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center'}}
+        onPress={() => console.log("You pressed me!")}>
+        <Text style={{ fontSize: 16, color: 'white' }}>Gotta Catch 'Em All!</Text>
+      </TouchableOpacity>
+    </View>
 
 ...
 
@@ -79,6 +92,7 @@ import { RNCarousel } from '@tttstudios/react-native-carousel'
 | onItemOut()        | NO       | Function called when an image comes into view           |
 | inFocusDuration    | NO       | Time in ms that an image is shown                       |
 | animationDuration  | NO       | Time in ms that the transition between two images takes |
+| children           | NO       | children to be displayed on top of carousel images      |
 | containerStyle     | NO       | Styling applied to container                            |
 | contentStyle       | NO       | Styling applied to content                              |
 

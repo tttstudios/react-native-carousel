@@ -75,6 +75,8 @@ describe('RNCarousel renders correctly', () => {
     expect(rnCarousel.exists({ testID: 'RNCarouselViewB' })).toEqual(true)
     expect(rnCarousel.exists({ testID: 'RNCarouselImageB' })).toEqual(true)
 
+    expect(rnCarousel.exists({ testID: 'RNCarouselViewChildren' })).toEqual(true)
+
     fullWrapper.unmount()
   })
 
@@ -90,6 +92,8 @@ describe('RNCarousel renders correctly', () => {
     expect(rnCarousel.exists({ testID: 'RNCarouselViewB' })).toEqual(false)
     expect(rnCarousel.exists({ testID: 'RNCarouselImageB' })).toEqual(false)
   
+    expect(rnCarousel.exists({ testID: 'RNCarouselViewChildren' })).toEqual(false)
+
     fullWrapper.unmount()
   })
 
