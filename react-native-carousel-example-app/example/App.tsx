@@ -48,7 +48,7 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle='dark-content' />
-      <View style={{ flex: 1, paddingHorizontal: 20 }}>
+      <View style={{ flex: 1 }}>
         <RNCarousel sources={SOURCES}/>
       </View>
     </>
