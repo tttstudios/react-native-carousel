@@ -10,6 +10,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
     onItemOut,
     inFocusDuration,
     animationDuration,
+    children,
     containerStyle: overrideContainerStyle,
     contentStyle: overrideContentStyle
   } = props
@@ -205,6 +206,14 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
     </Animated.View>,
   [indexB])
 
+  const ViewChildren = React.useMemo(() => 
+    <View
+      testID="RNCarouselViewChildren"
+      style={{ ...contentStyle }}>
+      { children }
+    </View>,
+  [children])
+
   return (
     <View
       testID="RNCarousel"
@@ -213,6 +222,7 @@ export const RNCarousel: React.FunctionComponent<RNCarouselProps> = (props: RNCa
       ? <>
         { ViewA }
         { ViewB }
+        { ViewChildren }
       </>
       : <></> }
     </View>

@@ -64,4 +64,4 @@ buck-out/
 
 # Local package testing
 .yalc/
-./yalc.lock
+yalc.lock
