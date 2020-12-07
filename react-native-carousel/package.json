@@ -1,6 +1,6 @@
 {
   "name": "@tttstudios/react-native-carousel",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A React Native component to display images with transitions between them",
   "main": "dist/index.js",
   "types": "src/index.d.ts",

@@ -1162,8 +1162,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@tttstudios/react-native-carousel@file:.yalc/@tttstudios/react-native-carousel":
-  version "1.0.2"
+"@tttstudios/react-native-carousel@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@tttstudios/react-native-carousel/-/react-native-carousel-1.1.0.tgz#e4382c38d225a4cc72b15e2530769346f7f119a1"
+  integrity sha512-9oqT+6tpM/g41uSZjVuzX7n1kcCgxKZjb568KbeXQNE+SKWqZNRMEdGjiRxsurZz6AD9qXDkXi8OdUkYEyAIEw==
 
 "@types/babel__core@^7.1.7":
   version "7.1.9"
